@@ -1,0 +1,16 @@
+[20:10:13] [Server thread/INFO]: Starting minecraft server version 1.8.8
+[20:10:13] [Server thread/WARN]: To start the server with more ram, launch it as "java -Xmx1024M -Xms1024M -jar minecraft_server.jar"
+[20:10:13] [Server thread/INFO]: Loading properties
+[20:10:13] [Server thread/INFO]: Default game type: SURVIVAL
+[20:10:13] [Server thread/INFO]: This server is running CraftBukkit version git-Spigot-unknown-unknown (MC: 1.8.8) (Implementing API version 1.8.8-R0.1-SNAPSHOT)
+[20:10:13] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[20:10:13] [Server thread/INFO]: Using 4 threads for Netty based IO
+[20:10:13] [Server thread/INFO]: Debug logging is disabled
+[20:10:13] [Server thread/INFO]: Generating keypair
+[20:10:13] [Server thread/INFO]: Starting Minecraft server on localhost:25565
+[20:10:13] [Server thread/INFO]: Using default channel type
+[20:10:13] [Server thread/WARN]: **** FAILED TO BIND TO PORT!
+[20:10:13] [Server thread/WARN]: The exception was: java.net.BindException: Address already in use
+[20:10:13] [Server thread/WARN]: Perhaps a server is already running on that port?
+[20:10:13] [Server thread/INFO]: Stopping server
+[20:10:13] [Server thread/INFO]: Saving players
