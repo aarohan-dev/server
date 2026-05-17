@@ -1,20 +1,21 @@
 #!/bin/sh
 
-# 1. Create folders first so the downloads have a place to go
+# 1. Create folders so downloads have a place to land
 mkdir -p bungee
 mkdir -p server
-mkdir -p web
 
-# 2. Download Bungee (The Proxy) if missing
+# 2. Download Bungee (The Proxy)
+# Using a direct raw link to ensure it's not a corrupted HTML file
 if [ ! -f "bungee/bungee.jar" ]; then
   echo "Downloading Bungee Proxy..."
-  curl -L -o bungee/bungee.jar https://github.com/YueSheng03/EaglercraftX-1.8/raw/main/BungeeCord/BungeeCord.jar
+  curl -L -o bungee/bungee.jar https://github.com/Eaglercraft-Archive/Eaglercraftx-1.8.8-src/raw/main/gateway/EaglercraftXBungee/EaglerXBungee-Latest.jar
 fi
 
-# 3. Download Server (The Game) if missing
+# 3. Download Server (The Game)
 if [ ! -f "server/server.jar" ]; then
   echo "Downloading Minecraft Server..."
-  curl -L -o server/server.jar https://github.com/YueSheng03/EaglercraftX-1.8/raw/main/spigot-1.8.8.jar
+  # Using a standard Spigot 1.8.8 link
+  curl -L -o server/server.jar https://cdn.getbukkit.org/spigot/spigot-1.8.8-R0.1-SNAPSHOT-latest.jar
 fi
 
 # 4. Accept EULA
@@ -23,11 +24,12 @@ echo "eula=true" > server/eula.txt
 # 5. RUN THE SERVER
 echo "Starting Bungee Proxy..."
 cd bungee
-java -Xmx128M -jar bungee.jar & 
+# We use -Xmx256M to give the proxy enough room to handle connections
+java -Xmx256M -jar bungee.jar & 
 
-# Wait a second for Bungee to warm up
-sleep 2
+sleep 5
 
 echo "Starting Minecraft Server..."
 cd ../server
+# We use the remaining RAM for the main server
 java -Xmx512M -jar server.jar nogui
