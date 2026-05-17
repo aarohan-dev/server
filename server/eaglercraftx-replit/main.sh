@@ -26,4 +26,4 @@ java -Xmx128M -jar bungee.jar &
 
 echo "Starting Minecraft Server..."
 cd ../server
-java -Xmx512M -jar server.jar nogui
+java -Xmx512M -jar server.jar nogui 
