@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Clear any stuck processes
 unset DISPLAY
