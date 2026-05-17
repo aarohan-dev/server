@@ -51,5 +51,5 @@ disabled_commands:
 servers:
   lobby:
     motd: '&1Just another Waterfall - Forced Host'
-    address: localhost:25565
+    address: 127.0.0.1:25566
     restricted: false
