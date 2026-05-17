@@ -1,34 +1,33 @@
 #!/bin/sh
 
-# Auto-download jars if missing
+# 1. Create folders first so the downloads have a place to go
+mkdir -p bungee
+mkdir -p server
+mkdir -p web
+
+# 2. Download Bungee (The Proxy) if missing
 if [ ! -f "bungee/bungee.jar" ]; then
+  echo "Downloading Bungee Proxy..."
   curl -L -o bungee/bungee.jar https://github.com/YueSheng03/EaglercraftX-1.8/raw/main/BungeeCord/BungeeCord.jar
 fi
 
-# Clear any stuck processes
-unset DISPLAY
+# 3. Download Server (The Game) if missing
+if [ ! -f "server/server.jar" ]; then
+  echo "Downloading Minecraft Server..."
+  curl -L -o server/server.jar https://github.com/YueSheng03/EaglercraftX-1.8/raw/main/spigot-1.8.8.jar
+fi
 
-# 1. Accept EULA automatically
+# 4. Accept EULA
 echo "eula=true" > server/eula.txt
-echo "eula=$REPL_OWNER/$REPL_SLUG" > eula.txt
 
-# 2. Ensure directories exist
-mkdir -p bungee/plugins
-mkdir -p server/plugins
-mkdir -p web
-
-# 3. Skip the Git/Compile loop (This is what was crashing)
-# We assume the files are already there from the import.
-echo "Skipping git update to bypass Replit security..."
-
-# 4. RUN THE SERVER
-# We are running the Bungee Proxy and the Server at the same time.
-# On Replit Free, we use less RAM to prevent crashing.
-
+# 5. RUN THE SERVER
 echo "Starting Bungee Proxy..."
 cd bungee
 java -Xmx128M -jar bungee.jar & 
 
+# Wait a second for Bungee to warm up
+sleep 2
+
 echo "Starting Minecraft Server..."
 cd ../server
-java -Xmx512M -jar server.jar nogui 
+java -Xmx512M -jar server.jar nogui
