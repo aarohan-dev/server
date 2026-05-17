@@ -1,5 +1,10 @@
 #!/bin/sh
 
+# Auto-download jars if missing
+if [ ! -f "bungee/bungee.jar" ]; then
+  curl -L -o bungee/bungee.jar https://github.com/YueSheng03/EaglercraftX-1.8/raw/main/BungeeCord/BungeeCord.jar
+fi
+
 # Clear any stuck processes
 unset DISPLAY
 
