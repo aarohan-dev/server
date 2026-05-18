@@ -3,16 +3,16 @@
 mkdir -p server
 echo "eula=true" > server/eula.txt
 
-# 2. Start the Proxy and FORCIBLY ignore the download requirement
+# 2. Start the Proxy (Tiny RAM)
 echo "Starting Bungee Proxy..."
 cd bungee
-# We add the STFU flag to hide warnings and ensure it uses local resources
-java -Xmx256M -Deaglerxbungee.stfu=true -jar bungee.jar & 
+java -Xmx128M -Xms128M -jar bungee.jar & 
 
-# 3. Wait for the Gateway to settle
-sleep 30
+# 3. Wait for the Gateway
+sleep 20
 
-# 4. Start the Minecraft Server
+# 4. Start the Minecraft Server (Low RAM + Optimization)
 echo "Starting Minecraft Server..."
 cd ../server
-java -Xmx512M -jar server.jar nogui
+# We use -Xmx300M to leave room for the OS and Bungee
+java -Xmx300M -Xms300M -jar server.jar nogui
