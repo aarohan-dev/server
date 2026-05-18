@@ -13,7 +13,7 @@ cd bungee
 java -Xmx256M -jar bungee.jar & 
 
 # Give bungee a moment to start
-sleep 5
+sleep 30
 
 # 4. Start the Minecraft Server
 echo "Starting Minecraft Server..."
